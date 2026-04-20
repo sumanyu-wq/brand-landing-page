@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xflow | India's Most Trusted Cross-Border Payments Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #0f1729;
+  --navy-light: #1a2744;
+  --blue: #3b5bff;
+  --blue-light: #eef1ff;
+  --green: #00c853;
+  --green-bg: #e8f8ef;
+  --gray-50: #f7f8fa;
+  --gray-100: #eef0f4;
+  --gray-200: #dde1e9;
+  --gray-400: #8892a7;
+  --gray-600: #555f75;
+  --gray-800: #2c3448;
+  --white: #ffffff;
+  --red-light: #ffeaea;
+  --red: #e53935;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 2px 16px rgba(15,23,41,0.08);
+  --shadow-lg: 0 8px 40px rgba(15,23,41,0.12);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--navy); line-height: 1.6; background: var(--white); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ===== ANNOUNCEMENT STRIP ===== */
+.announcement-strip {
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.announcement-strip span { opacity: 0.7; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  border-bottom: 1px solid var(--gray-100);
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 800; color: var(--navy); }
+.logo svg { width: 28px; height: 28px; }
+.nav-cta {
+  background: var(--navy);
+  color: var(--white);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.nav-cta:hover { background: var(--navy-light); }
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--gray-50);
+  padding: 64px 0 80px;
+  overflow: hidden;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.hero-sub {
+  font-size: 18px;
+  color: var(--gray-600);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: var(--gray-600);
+}
+.hero-features span { display: flex; align-items: center; gap: 6px; }
+.hero-features .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gray-400); flex-shrink: 0; }
+.hero-ctas { display: flex; gap: 12px; margin-bottom: 20px; }
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: #2a4ae8; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(59,91,255,0.3); }
+.btn-secondary {
+  background: transparent;
+  color: var(--navy);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid var(--gray-200);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--navy); }
+.trust-badges { display: flex; gap: 16px; font-size: 13px; color: var(--gray-400); font-weight: 500; }
+.trust-badges span { display: flex; align-items: center; gap: 6px; }
+.trust-badges .badge-icon { width: 16px; height: 16px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; }
+
+/* Hero Calculator */
+.hero-calc {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 32px;
+}
+.hero-calc h3 { font-size: 18px; font-weight: 700; margin-bottom: 24px; }
+.calc-input-group { margin-bottom: 16px; }
+.calc-input-group label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-600); margin-bottom: 6px; }
+.calc-input-group input, .calc-input-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background: var(--white);
+  transition: border 0.2s;
+}
+.calc-input-group input:focus, .calc-input-group select:focus { border-color: var(--blue); outline: none; }
+/* Provider cards */
+.calc-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.calc-provider-card {
+  padding: 16px 20px; border-radius: 14px;
+  transition: transform 0.15s;
+}
+.calc-provider-card:hover { transform: translateY(-1px); }
+.calc-provider-card.card-xflow { background: #e8f8ef; }
+.calc-provider-card.card-others { background: var(--gray-50); }
+.calc-provider-card.card-bank { background: #fff0f0; }
+.calc-card-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px;
+}
+.calc-card-name {
+  font-size: 16px; font-weight: 700; color: var(--navy);
+  display: flex; align-items: center; gap: 8px;
+}
+.calc-card-name .card-icon {
+  width: 22px; height: 22px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+}
+.card-xflow .calc-card-name .card-icon { background: var(--blue); color: var(--white); }
+.card-others .calc-card-name .card-icon { background: var(--gray-200); color: var(--gray-600); }
+.card-bank .calc-card-name .card-icon { background: rgba(229,57,53,0.15); color: var(--red); }
+.calc-card-amount {
+  font-size: 22px; font-weight: 800; color: var(--navy);
+}
+.card-bank .calc-card-amount { color: var(--red); }
+.card-xflow .calc-card-amount { color: #1b7a3d; }
+.calc-card-details {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 13px; color: var(--gray-400); font-weight: 500;
+  padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.06);
+}
+.calc-savings {
+  margin-top: 12px;
+  background: var(--green-bg);
+  color: #1b7a3d;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* ===== SOCIAL PROOF + STATS ===== */
+.proof-section {
+  padding: 40px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+}
+.proof-label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.logo-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.logo-scroll .client-logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gray-200);
+  white-space: nowrap;
+  opacity: 0.6;
+}
+.proof-stats {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 48px;
+}
+.proof-stat {
+  text-align: center;
+}
+.proof-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.proof-desc {
+  font-size: 13px;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+/* ===== WHO XFLOW IS FOR ===== */
+.audience-section {
+  padding: 80px 0;
+  background: var(--gray-50);
+}
+.section-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.section-heading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.audience-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.audience-card .icon {
+  width: 48px;
+  height: 48px;
+  background: var(--blue-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.audience-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.audience-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+.audience-closing {
+  text-align: center;
+  font-size: 17px;
+  color: var(--gray-600);
+  margin-top: 12px;
+}
+
+/* ===== COMPARISON ===== */
+.comparison-section {
+  padding: 100px 0;
+  background: var(--navy);
+  color: var(--white);
+  overflow: hidden;
+}
+.comparison-wrap {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Left: copy block */
+.comp-left {}
+.comp-left .section-label { text-align: left; color: rgba(255,255,255,0.4); }
+.comp-left h2 {
+  text-align: left;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.comp-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.comp-pain-points { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.comp-pain {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5;
+}
+.comp-pain .pain-icon {
+  flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; margin-top: 2px;
+}
+.comp-pain .pain-icon.red { background: rgba(229,57,53,0.2); color: #ff8a80; }
+.comp-pain .pain-icon.green { background: rgba(0,200,83,0.2); color: #69f0ae; }
+.comp-cta-wrap { display: flex; align-items: center; gap: 16px; }
+.comp-cta-wrap .btn-primary { background: var(--white); color: var(--navy); }
+.comp-cta-wrap .btn-primary:hover { background: var(--gray-100); box-shadow: 0 4px 20px rgba(255,255,255,0.2); }
+
+/* Right: dual invoice animation */
+.comp-right { position: relative; }
+.dual-invoices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.inv-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.comp-right.is-visible .inv-card { opacity: 1; transform: translateY(0); }
+.comp-right.is-visible .inv-card.xflow-card { transition-delay: 0.15s; }
+.inv-card-header {
+  padding: 18px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.inv-card.bank-card .inv-card-header { background: var(--gray-800); color: rgba(255,255,255,0.7); }
+.inv-card.xflow-card .inv-card-header { background: var(--blue); color: var(--white); }
+.inv-card-body { background: var(--white); padding: 24px; }
+.inv-card-amount {
+  text-align: center;
+  padding: 8px 0 20px;
+  border-bottom: 1px dashed var(--gray-200);
+  margin-bottom: 16px;
+}
+.inv-card-amount .amt-label {
+  font-size: 11px; color: var(--gray-400);
+  text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+}
+.inv-card-amount .amt-value { font-size: 28px; font-weight: 800; color: var(--navy); }
+.inv-ded-list { display: flex; flex-direction: column; gap: 8px; min-height: 120px; }
+.inv-ded {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  opacity: 0; transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.inv-ded.is-shown { opacity: 1; transform: translateX(0); }
+.inv-ded.bank-ded { background: var(--red-light); }
+.inv-ded.xflow-ded { background: var(--green-bg); }
+.inv-ded .ded-name { color: var(--gray-600); }
+.inv-ded .ded-val { font-weight: 700; }
+.inv-ded.bank-ded .ded-val { color: var(--red); }
+.inv-ded.xflow-ded .ded-val { color: #1b7a3d; }
+.inv-card-result {
+  margin-top: 16px; padding: 16px 14px;
+  border-radius: 12px; text-align: center;
+  opacity: 0; transform: scale(0.95);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.inv-card-result.is-shown { opacity: 1; transform: scale(1); }
+.bank-card .inv-card-result { background: #fff0f0; }
+.xflow-card .inv-card-result { background: var(--green-bg); }
+.inv-card-result .res-label {
+  font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.06em; font-weight: 600; margin-bottom: 4px;
+}
+.bank-card .inv-card-result .res-label { color: var(--red); }
+.xflow-card .inv-card-result .res-label { color: #1b7a3d; }
+.inv-card-result .res-value { font-size: 22px; font-weight: 800; }
+.bank-card .inv-card-result .res-value { color: var(--red); }
+.xflow-card .inv-card-result .res-value { color: var(--green); }
+/* Savings bar */
+.inv-savings-bar {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #1b7a3d 0%, #00c853 100%);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 20px 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  opacity: 0; transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.inv-savings-bar.is-shown { opacity: 1; transform: translateY(0); }
+.inv-savings-bar .sav-text { font-size: 15px; font-weight: 600; }
+.inv-savings-bar .sav-amount { font-size: 26px; font-weight: 800; }
+.inv-savings-bar .sav-per { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+/* Replay */
+.comp-replay {
+  text-align: center; margin-top: 16px;
+}
+.comp-replay button {
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5); padding: 8px 20px;
+  border-radius: 8px; font-size: 12px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  transition: all 0.2s;
+}
+.comp-replay button:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+/* ===== HOW IT WORKS ===== */
+.how-section {
+  padding: 80px 0;
+  background: var(--gray-50);
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.step-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.step-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.step-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+.how-closing {
+  text-align: center;
+  font-size: 16px;
+  color: var(--gray-600);
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+/* ===== WHY SWITCH ===== */
+.switch-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+.switch-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.switch-table thead th {
+  padding: 18px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  background: var(--navy);
+  color: var(--white);
+}
+.switch-table thead th:nth-child(2) { color: var(--gray-400); }
+.switch-table thead th:nth-child(3) { color: var(--green); }
+.switch-table tbody td {
+  padding: 18px 24px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: top;
+}
+.switch-table tbody tr:last-child td { border-bottom: none; }
+.switch-table tbody td:first-child { font-weight: 600; color: var(--navy); background: var(--gray-50); }
+.switch-table tbody td:nth-child(2) { color: var(--gray-600); }
+.switch-table tbody td:nth-child(3) { color: var(--navy); font-weight: 500; }
+
+/* ===== FIRA CALCULATOR ===== */
+.fira-section {
+  padding: 100px 0;
+  background: var(--gray-50);
+}
+.fira-layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Left copy */
+.fira-left {}
+.fira-left .section-label { text-align: left; }
+.fira-left h2 {
+  text-align: left; font-size: 36px; font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
+}
+.fira-left .fira-desc {
+  font-size: 15px; color: var(--gray-600); line-height: 1.7; margin-bottom: 28px;
+}
+.fira-left .fira-cta { margin-top: 0; }
+
+/* Right upload card */
+.fira-upload-card {
+  background: var(--blue-light);
+  border-radius: 24px;
+  padding: 8px;
+}
+.fira-upload-inner {
+  background: var(--blue-light);
+  border: 2px dashed rgba(59,91,255,0.2);
+  border-radius: 18px;
+  padding: 48px 40px;
+  text-align: center;
+}
+.fira-upload-icon {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, rgba(59,91,255,0.08) 0%, rgba(59,91,255,0.15) 100%);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  font-size: 32px; color: var(--navy);
+}
+.fira-upload-inner h3 {
+  font-size: 20px; font-weight: 700; color: var(--navy);
+  line-height: 1.4; margin-bottom: 24px;
+  max-width: 340px; margin-left: auto; margin-right: auto;
+}
+.fira-upload-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--navy); color: var(--white);
+  padding: 14px 32px; border-radius: 12px;
+  font-size: 16px; font-weight: 700;
+  border: none; cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+.fira-upload-btn:hover {
+  background: var(--navy-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(15,23,41,0.15);
+}
+.fira-upload-formats {
+  font-size: 13px; color: var(--gray-400); line-height: 1.5;
+}
+.fira-consent {
+  margin-top: 16px;
+  background: rgba(59,91,255,0.06);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 12px; color: var(--gray-600);
+  line-height: 1.6; text-align: left;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ===== TRUST BADGES ===== */
+.trust-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.trust-card {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s;
+}
+.trust-card:hover { transform: translateY(-2px); }
+.trust-card .trust-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--blue-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 24px;
+}
+.trust-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.trust-card p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+
+/* ===== CASE STUDIES ===== */
+.cases-section {
+  padding: 80px 0;
+  background: var(--gray-50);
+}
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.case-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+.case-card .case-type {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.case-card .case-city { font-size: 12px; color: var(--gray-400); margin-bottom: 16px; }
+.case-card blockquote {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--gray-800);
+  font-style: italic;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 3px solid var(--blue);
+}
+.case-metrics { display: flex; gap: 24px; margin-bottom: 16px; }
+.case-metric { font-size: 13px; }
+.case-metric .metric-val { font-weight: 700; color: var(--navy); }
+.case-metric .metric-label { color: var(--gray-400); }
+.case-author { font-size: 13px; }
+.case-author .name { font-weight: 600; }
+.case-author .role { color: var(--gray-400); }
+
+/* ===== FOOTER CTA ===== */
+.footer-cta {
+  padding: 80px 0;
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+}
+.footer-cta h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.footer-cta .subtext {
+  font-size: 17px;
+  color: var(--gray-400);
+  margin-bottom: 32px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-cta .btn-primary { font-size: 18px; padding: 16px 40px; }
+.footer-trust {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--gray-400);
+}
+.footer-trust span { margin: 0 8px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .comparison-wrap { grid-template-columns: 1fr; }
+  .comp-left h2 { font-size: 32px; }
+  .comp-left .section-label, .comp-left h2, .comp-sub { text-align: center; }
+  .comp-cta-wrap { justify-content: center; }
+  .comp-pain-points { align-items: center; }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .fira-layout { grid-template-columns: 1fr; }
+  .proof-stats { gap: 32px; }
+  .proof-number { font-size: 28px; }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 34px; }
+  .section-heading { font-size: 28px; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .switch-table { display: block; overflow-x: auto; }
+  .fira-layout { grid-template-columns: 1fr; }
+  .fira-left { text-align: center; }
+  .fira-left .section-label { text-align: center; }
+  .fira-left h2 { text-align: center; font-size: 28px; }
+  .fira-upload-inner { padding: 36px 24px; }
+  .fira-upload-inner h3 { font-size: 18px; }
+  .hero-ctas { flex-direction: column; }
+  .hero-features { flex-wrap: wrap; }
+  .logo-scroll { gap: 24px; flex-wrap: wrap; justify-content: center; }
+  .proof-stats { flex-wrap: wrap; gap: 24px; }
+  .proof-number { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement strip removed -->
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 28 28" fill="none"><path d="M4 8L14 4L24 8L14 12L4 8Z" fill="#3b5bff"/><path d="M4 12L14 16L24 12" stroke="#3b5bff" stroke-width="2"/><path d="M4 16L14 20L24 16" stroke="#3b5bff" stroke-width="2" opacity="0.5"/></svg>
+      Xflow
+    </a>
+    <button class="nav-cta" onclick="document.getElementById('footer-cta').scrollIntoView({behavior:'smooth'})">Sign up</button>
+  </div>
+</nav>
+
+<!-- SECTION 1: Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-left">
+      <span class="hero-badge">Backed by [Investor 1] &middot; [Investor 2] &middot; [Investor 3]</span>
+      <h1>Save up to 4% on every international invoice.</h1>
+      <p class="hero-sub">Built for Indian Service Exporters.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary">Start saving today</button>
+        <button class="btn-secondary" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">See how it works</button>
+      </div>
+      <div class="hero-features">
+        <span><span class="dot"></span> 0% FX markup</span>
+        <span><span class="dot"></span> Instant settlement</span>
+        <span><span class="dot"></span> No transaction limits</span>
+        <span><span class="dot"></span> RBI Approved</span>
+        <span><span class="dot"></span> FEMA Compliant</span>
+      </div>
+    </div>
+
+    <!-- Hero Calculator -->
+    <div class="hero-calc">
+      <h3>See exactly what you're losing on every transfer.</h3>
+      <div class="calc-input-group">
+        <label>Invoice amount (USD)</label>
+        <input type="number" id="calcAmount" value="10000" placeholder="e.g. 10000" oninput="updateCalc()">
+      </div>
+      <div class="calc-input-group">
+        <label>Live USD/INR rate (mid-market)</label>
+        <input type="number" id="calcRate" value="84.50" step="0.01" oninput="updateCalc()">
+      </div>
+      <div class="calc-cards">
+        <!-- Xflow card -->
+        <div class="calc-provider-card card-xflow">
+          <div class="calc-card-top">
+            <div class="calc-card-name"><span class="card-icon">&#9889;</span> Xflow</div>
+            <div class="calc-card-amount" id="xflowAmount">-</div>
+          </div>
+          <div class="calc-card-details">
+            <span>Fee: <span id="xflowFee">-</span></span>
+            <span>FX rate: <span id="xflowRate">-</span></span>
+          </div>
+        </div>
+
+        <!-- Others card -->
+        <div class="calc-provider-card card-others">
+          <div class="calc-card-top">
+            <div class="calc-card-name"><span class="card-icon">&#8644;</span> Others</div>
+            <div class="calc-card-amount" id="otherAmount">-</div>
+          </div>
+          <div class="calc-card-details">
+            <span>Fee: <span id="otherFee">-</span></span>
+            <span>FX rate: <span id="otherRate">-</span></span>
+          </div>
+        </div>
+
+        <!-- Bank card -->
+        <div class="calc-provider-card card-bank">
+          <div class="calc-card-top">
+            <div class="calc-card-name"><span class="card-icon">&#127970;</span> Banks</div>
+            <div class="calc-card-amount" id="bankAmount">-</div>
+          </div>
+          <div class="calc-card-details">
+            <span>Fee: <span id="bankFee">-</span></span>
+            <span>FX rate: <span id="bankRate">-</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="calc-savings" id="calcSavings">You save with Xflow: &#8377;0</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: Social Proof + Stats (combined) -->
+<section class="proof-section">
+  <div class="container">
+    <p class="proof-label">Trusted by India's fastest-growing exporters</p>
+    <div class="logo-scroll">
+      <span class="client-logo">DemandNXT</span>
+      <span class="client-logo">TechnoServe</span>
+      <span class="client-logo">Geekyants</span>
+      <span class="client-logo">Futurism</span>
+      <span class="client-logo">Codalien</span>
+      <span class="client-logo">HashedIn</span>
+      <span class="client-logo">Rapido</span>
+      <span class="client-logo">TechAhead</span>
+    </div>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="proof-number">$2B+</div>
+        <div class="proof-desc">Processed</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-number">12,000+</div>
+        <div class="proof-desc">Businesses</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-number">50%</div>
+        <div class="proof-desc">Lower FX costs</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-number">24 hrs</div>
+        <div class="proof-desc">Settlement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: Who Xflow Is For -->
+<section class="audience-section">
+  <div class="container">
+    <h2 class="section-heading">Built for every business that invoices outside India.</h2>
+    <p style="text-align:center; color:var(--gray-600); margin-top:-32px; margin-bottom:48px; font-size:17px;">Xflow handles everything that happens next.</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="icon">&#128187;</div>
+        <h4>Service Exporters</h4>
+        <p>IT firms, agencies, consultancies, law firms, outsourcing companies &mdash; any business billing international clients for services.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon">&#9998;</div>
+        <h4>Freelancers</h4>
+        <p>Independent professionals invoicing international clients &mdash; designers, developers, writers, consultants.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon">&#128230;</div>
+        <h4>Goods Exporters</h4>
+        <p>Companies shipping physical goods internationally and raising invoices against those shipments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: Comparison Animation -->
+<section class="comparison-section" id="comparison">
+  <div class="container">
+    <div class="comparison-wrap">
+
+      <!-- Left: Tight copy block -->
+      <div class="comp-left">
+        <div class="section-label">See the difference</div>
+        <h2>Know exactly what you keep &mdash; before the payment arrives.</h2>
+        <p class="comp-sub">Watch how your $10,000 invoice gets processed and see the exact difference in what lands in your account with Xflow vs a traditional bank.</p>
+
+        <div class="comp-pain-points">
+          <div class="comp-pain">
+            <span class="pain-icon red">&times;</span>
+            <span>Banks deduct 3&ndash;5% in wire fees, FX spread, and hidden NOSTRO charges</span>
+          </div>
+          <div class="comp-pain">
+            <span class="pain-icon green">&#10003;</span>
+            <span>Xflow charges a flat 0.5% with the best live FX rate &mdash; no hidden fees, ever</span>
+          </div>
+        </div>
+
+        <div class="comp-cta-wrap">
+          <button class="btn-primary" onclick="document.getElementById('footer-cta').scrollIntoView({behavior:'smooth'})">Start saving today</button>
+          <a href="#fira-calculator" class="btn-primary" style="display:inline-block; background:transparent; border:2px solid rgba(255,255,255,0.25); color:var(--white);">See your exact savings &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Right: Dual invoice animation -->
+      <div class="comp-right" id="compRight">
+        <div class="dual-invoices">
+          <!-- Bank invoice -->
+          <div class="inv-card bank-card">
+            <div class="inv-card-header">
+              <span>&#127970;</span> Via Bank
+            </div>
+            <div class="inv-card-body">
+              <div class="inv-card-amount">
+                <div class="amt-label">Invoice received</div>
+                <div class="amt-value">$10,000</div>
+              </div>
+              <div class="inv-ded-list" id="bankDeds">
+                <div class="inv-ded bank-ded" data-delay="600">
+                  <span class="ded-name">Wire fee (~1.5%)</span>
+                  <span class="ded-val">&minus;$150</span>
+                </div>
+                <div class="inv-ded bank-ded" data-delay="1100">
+                  <span class="ded-name">FX spread (~2.5%)</span>
+                  <span class="ded-val">&minus;$250</span>
+                </div>
+                <div class="inv-ded bank-ded" data-delay="1600">
+                  <span class="ded-name">NOSTRO charges</span>
+                  <span class="ded-val">&minus;$60</span>
+                </div>
+              </div>
+              <div class="inv-card-result" id="bankResult">
+                <div class="res-label">You receive</div>
+                <div class="res-value">~&#8377;7,90,000</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Xflow invoice -->
+          <div class="inv-card xflow-card">
+            <div class="inv-card-header">
+              <span>&#9889;</span> Via Xflow
+            </div>
+            <div class="inv-card-body">
+              <div class="inv-card-amount">
+                <div class="amt-label">Invoice received</div>
+                <div class="amt-value">$10,000</div>
+              </div>
+              <div class="inv-ded-list" id="xflowDeds">
+                <div class="inv-ded xflow-ded" data-delay="1800">
+                  <span class="ded-name">Flat fee (0.5%)</span>
+                  <span class="ded-val">&minus;$50</span>
+                </div>
+              </div>
+              <div class="inv-card-result" id="xflowResult">
+                <div class="res-label">You receive</div>
+                <div class="res-value">~&#8377;8,29,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Savings bar -->
+        <div class="inv-savings-bar" id="savingsBar">
+          <div>
+            <div class="sav-text">You save with Xflow</div>
+            <div class="sav-per">On every single invoice</div>
+          </div>
+          <span class="sav-amount">+&#8377;39,000</span>
+        </div>
+
+        <div class="comp-replay">
+          <button onclick="replayAnimation()">&#8635; Replay animation</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: How Xflow Works -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-heading">Invoice raised. INR in your account. 5 minutes to set up, zero paperwork.</h2>
+    <p style="text-align:center; color:var(--gray-600); margin-bottom:48px; max-width:700px; margin-left:auto; margin-right:auto;">Xflow handles payments, compliance, and settlement &mdash; automatically.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h4>Get a global account in minutes</h4>
+        <p>Sign up and get a dedicated foreign currency account instantly. Share it with your client like any bank account.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h4>Client pays how they already pay</h4>
+        <p>SWIFT, ACH, SEPA, or local transfer &mdash; whatever works for them. Nothing changes on their end.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h4>Compliance handled automatically</h4>
+        <p>FEMA filing, purpose code mapping, KYC &mdash; all done in the background. You touch nothing.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h4>INR in your account within 24 hours</h4>
+        <p>Funds settle directly to your Indian bank account. FIRA issued instantly, ready to download.</p>
+      </div>
+    </div>
+    <p class="how-closing">No queues. No paperwork. No surprise deductions.</p>
+    <div style="text-align:center; margin-top:24px;">
+      <button class="btn-secondary" onclick="document.getElementById('footer-cta').scrollIntoView({behavior:'smooth'})">Set up in 5 minutes &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: Why Businesses Switch -->
+<section class="switch-section">
+  <div class="container">
+    <div class="section-label">Why businesses switch</div>
+    <h2 class="section-heading">Your current setup is costing you more than you think.</h2>
+    <p style="text-align:center; color:var(--gray-600); margin-bottom:40px;">Here's what Xflow customers discovered when they made the move.</p>
+    <table class="switch-table">
+      <thead>
+        <tr><th>Pain point</th><th>Before Xflow</th><th>With Xflow</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FX markup</td>
+          <td>Banks charge 2&ndash;4% above mid-market rate</td>
+          <td>Live mid-market rate. Flat 0.3&ndash;0.5% fee. Always.</td>
+        </tr>
+        <tr>
+          <td>Compliance</td>
+          <td>Manual FEMA filings, delayed FIRA, CA dependency</td>
+          <td>Auto-filed. Instant FIRA download. No CA needed.</td>
+        </tr>
+        <tr>
+          <td>Settlement speed</td>
+          <td>3&ndash;7 business days via SWIFT</td>
+          <td>Settled within 24 hours, guaranteed.</td>
+        </tr>
+        <tr>
+          <td>Transparency</td>
+          <td>Hidden charges revealed only in your statement</td>
+          <td>Full fee breakdown shown before you confirm.</td>
+        </tr>
+        <tr>
+          <td>Multi-currency</td>
+          <td>One account, one currency, constant headaches</td>
+          <td>USD, EUR, GBP, AUD, SGD &mdash; one dashboard.</td>
+        </tr>
+        <tr>
+          <td>Integration</td>
+          <td>No ERP or accounting software connectivity</td>
+          <td>Native Zoho, Tally, and QuickBooks sync.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 8: FIRA Calculator -->
+<section class="fira-section" id="fira-calculator">
+  <div class="container">
+    <div class="fira-layout">
+
+      <!-- Left: Copy -->
+      <div class="fira-left">
+        <div class="section-label">FIRA calculator</div>
+        <h2>Know what your bank has charged you.</h2>
+        <p class="fira-desc">FIRA (Foreign Inward Remittance Advice) is mandatory for every international receipt in India. Xflow issues it instantly &mdash; at zero extra cost.</p>
+        <div class="fira-cta">
+          <button class="btn-primary">Open your Xflow account &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Right: Upload Card -->
+      <div class="fira-upload-card">
+        <div class="fira-upload-inner">
+          <div class="fira-upload-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+          </div>
+          <h3>Get a breakdown of your actual costs by uploading your FIRA (Foreign Inward Remittance Advice)</h3>
+          <button class="fira-upload-btn">&#8593; Upload FIRA</button>
+          <p class="fira-upload-formats">We accept files less than 10MB in PDF, PNG, JPEG formats.</p>
+        </div>
+        <div class="fira-consent">
+          You consent to our use of the document uploaded to provide the cost breakdown and to contact you regarding potential savings. Please redact any sensitive details such as bank account information before uploading.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: Trust Badges -->
+<section class="trust-section">
+  <div class="container">
+    <div class="section-label">Trust & compliance</div>
+    <h2 class="section-heading">Built on India's most regulated payments infrastructure.</h2>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">&#127970;</div>
+        <h4>RBI Authorised</h4>
+        <p>Fully licensed under FEMA. Every transaction compliant with Indian foreign exchange law.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">&#127975;</div>
+        <h4>AD-1 Bank Partner</h4>
+        <p>Powered by Authorised Dealer Category-I banking &mdash; the highest forex authorisation in India.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">&#9989;</div>
+        <h4>100% FEMA Compliant</h4>
+        <p>Purpose code mapping, KYC, and FEMA documentation handled automatically on every transaction.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">&#128274;</div>
+        <h4>ISO 27001 Certified</h4>
+        <p>Enterprise-grade security. Your financial data encrypted at rest and in transit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: Case Studies -->
+<section class="cases-section">
+  <div class="container">
+    <div class="section-label">Customer stories</div>
+    <h2 class="section-heading">Real businesses. Real savings.</h2>
+    <p style="text-align:center; color:var(--gray-600); margin-bottom:40px;">See how companies like yours cut costs, saved hours, and scaled globally with Xflow.</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-type">IT Services</div>
+        <div class="case-city">Bangalore</div>
+        <blockquote>"Switching to Xflow saved us 3.5% on every invoice. That's lakhs per quarter we were just giving away to our bank."</blockquote>
+        <div class="case-metrics">
+          <div class="case-metric"><span class="metric-val">3.5%</span> <span class="metric-label">saved per invoice</span></div>
+          <div class="case-metric"><span class="metric-val">24hr</span> <span class="metric-label">settlement</span></div>
+        </div>
+        <div class="case-author"><span class="name">Rajesh K.</span> &mdash; <span class="role">CFO</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-type">Design Agency</div>
+        <div class="case-city">Mumbai</div>
+        <blockquote>"No more chasing our CA for FIRA certificates. Xflow generates them instantly. Our compliance is finally on autopilot."</blockquote>
+        <div class="case-metrics">
+          <div class="case-metric"><span class="metric-val">100%</span> <span class="metric-label">auto-compliance</span></div>
+          <div class="case-metric"><span class="metric-val">0</span> <span class="metric-label">CA dependency</span></div>
+        </div>
+        <div class="case-author"><span class="name">Priya M.</span> &mdash; <span class="role">Founder</span></div>
+      </div>
+      <div class="case-card">
+        <div class="case-type">Freelancer</div>
+        <div class="case-city">Delhi</div>
+        <blockquote>"I used to lose &#8377;15,000+ per month on hidden bank charges. With Xflow, I see exactly what I'll receive before I even confirm."</blockquote>
+        <div class="case-metrics">
+          <div class="case-metric"><span class="metric-val">&#8377;15K+</span> <span class="metric-label">saved monthly</span></div>
+          <div class="case-metric"><span class="metric-val">5 min</span> <span class="metric-label">setup time</span></div>
+        </div>
+        <div class="case-author"><span class="name">Amit S.</span> &mdash; <span class="role">Developer</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta" id="footer-cta">
+  <div class="container">
+    <h2>Start receiving global payments today.</h2>
+    <p class="subtext">Free to set up. No minimum volume. Cancel anytime.</p>
+    <button class="btn-primary">Open your Xflow account &#8594;</button>
+    <div class="footer-trust">
+      <span>RBI Authorised</span> &middot;
+      <span>FEMA Compliant</span> &middot;
+      <span>Trusted by 12,000+ businesses</span>
+    </div>
+  </div>
+</section>
+
+<script>
+function formatINR(num) {
+  return '&#8377;' + Math.round(num).toLocaleString('en-IN');
+}
+
+function updateCalc() {
+  const amount = parseFloat(document.getElementById('calcAmount').value) || 10000;
+  const rate = parseFloat(document.getElementById('calcRate').value) || 84.50;
+
+  const gross = amount * rate;
+
+  // Bank: ~1.5% wire fee + ~2.5% FX spread + ~0.5% NOSTRO = ~4.5%
+  const bankFeePercent = 0.015;
+  const bankFXSpread = 0.025;
+  const bankNostro = 0.005;
+  const bankTotal = gross * (1 - bankFeePercent - bankFXSpread - bankNostro);
+  const bankFeeAmt = gross * (bankFeePercent + bankNostro);
+  const bankEffRate = rate * (1 - bankFXSpread);
+
+  // Others: ~2% total
+  const otherFeePercent = 0.02;
+  const otherTotal = gross * (1 - otherFeePercent);
+  const otherFeeAmt = gross * otherFeePercent;
+
+  // Xflow: 0.5% flat
+  const xflowFeePercent = 0.005;
+  const xflowTotal = gross * (1 - xflowFeePercent);
+  const xflowFeeAmt = gross * xflowFeePercent;
+
+  document.getElementById('bankFee').innerHTML = formatINR(bankFeeAmt);
+  document.getElementById('otherFee').innerHTML = formatINR(otherFeeAmt);
+  document.getElementById('xflowFee').innerHTML = formatINR(xflowFeeAmt);
+
+  document.getElementById('bankRate').textContent = bankEffRate.toFixed(2);
+  document.getElementById('otherRate').textContent = (rate * (1 - (otherFeePercent > 0.01 ? 0.005 : 0))).toFixed(2);
+  document.getElementById('xflowRate').textContent = rate.toFixed(2) + ' (mid)';
+
+  document.getElementById('bankAmount').innerHTML = formatINR(bankTotal);
+  document.getElementById('otherAmount').innerHTML = formatINR(otherTotal);
+  document.getElementById('xflowAmount').innerHTML = formatINR(xflowTotal);
+
+  const savings = xflowTotal - bankTotal;
+  document.getElementById('calcSavings').innerHTML = 'You save with Xflow: ' + formatINR(savings);
+}
+
+// Initialize calculators
+updateCalc();
+
+// ===== COMPARISON SCROLL-TRIGGERED ANIMATION =====
+function runCompAnimation() {
+  const compRight = document.getElementById('compRight');
+  const bankDeds = document.querySelectorAll('#bankDeds .inv-ded');
+  const xflowDeds = document.querySelectorAll('#xflowDeds .inv-ded');
+  const bankResult = document.getElementById('bankResult');
+  const xflowResult = document.getElementById('xflowResult');
+  const savingsBar = document.getElementById('savingsBar');
+
+  // Reset everything
+  compRight.classList.remove('is-visible');
+  bankDeds.forEach(d => d.classList.remove('is-shown'));
+  xflowDeds.forEach(d => d.classList.remove('is-shown'));
+  bankResult.classList.remove('is-shown');
+  xflowResult.classList.remove('is-shown');
+  savingsBar.classList.remove('is-shown');
+
+  // Trigger card entrance
+  requestAnimationFrame(() => {
+    compRight.classList.add('is-visible');
+
+    // Animate deductions with staggered delays
+    bankDeds.forEach(ded => {
+      const delay = parseInt(ded.dataset.delay) || 600;
+      setTimeout(() => ded.classList.add('is-shown'), delay);
+    });
+
+    xflowDeds.forEach(ded => {
+      const delay = parseInt(ded.dataset.delay) || 1800;
+      setTimeout(() => ded.classList.add('is-shown'), delay);
+    });
+
+    // Show results
+    setTimeout(() => bankResult.classList.add('is-shown'), 2200);
+    setTimeout(() => xflowResult.classList.add('is-shown'), 2400);
+    setTimeout(() => savingsBar.classList.add('is-shown'), 2900);
+  });
+}
+
+function replayAnimation() {
+  runCompAnimation();
+}
+
+// Intersection Observer for scroll trigger
+const compObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      runCompAnimation();
+      compObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+compObserver.observe(document.getElementById('compRight'));
+</script>
+</body>
+</html>
